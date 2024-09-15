@@ -2,7 +2,7 @@
 
 
 
-module lab4_top 
+module lab5_top 
         ( input              clk
         , input              KBD_CLK
         , input              KBD_DATA
@@ -104,13 +104,28 @@ module lab4_top
                 ) ; 
 
 
+        
+        BLK_MEM_ROM   u_BLK_MEM_ROM 
+                (       .clka           (clka)     // input wire clka
+                ,       .ena            (ena)      // input wire ena
+                ,       .addra          (addra)    // input wire [15 : 0] addra
+                ,       .douta          (douta)    // output wire [7 : 0] douta
+                );
 
 
-        blk_mem_gen_0 u_bram
-                (       .addra           (addra)
-                ,       .douta           (douta)
-                ,       .clka            (clk)
-                ) ; 
+        DUAL_PORT_BRAM u_DUAL_PORT_BRAM 
+                  (      .clka           (clka)    // input wire clka
+                  ,      .ena            (ena)     // input wire ena
+                  ,      .wea            (wea)     // input wire [0 : 0] wea
+                  ,      .addra          (addra)   // input wire [15 : 0] addra
+                  ,      .dina           (dina)    // input wire [7 : 0] dina
+                  ,      .clkb           (clkb)    // input wire clkb
+                  ,      .enb            (enb)     // input wire enb
+                  ,      .addrb          (addrb)   // input wire [15 : 0] addrb
+                  ,      .doutb          (doutb)   // output wire [7 : 0] doutb
+                  );
+
+
 
         // ila_0 u_ila (
         //         .clk (clk)
