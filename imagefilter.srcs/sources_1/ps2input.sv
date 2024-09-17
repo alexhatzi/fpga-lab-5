@@ -7,7 +7,8 @@ module ps2input(
     ,output logic [7:0] key           // 8 bit keyboard input (partiy bit stripped)
     ,output logic       dvld          // If parity bit matches, dvld is high
     ,output logic [1:0] error_detect
-    ,output logic [2:0] state_detect 
+    ,output logic       new_input_flag
+    ,input  logic       clear_flag
     ,output logic [3:0] bit_loc
     );
 
@@ -30,7 +31,6 @@ module ps2input(
     always @(negedge kbd_clk) begin
         case (KBD_STATE)
             IDLE : begin 
-                    state_detect <= 3'b001 ; 
                     dvld         <= 1'b0   ;  
                     error_detect <= 2'b00  ; 
                     if (kbd_data == 1'b0 && kbd_clk_d == 1'b1) begin  // Check both kbd_data and previous kbd_clk
@@ -39,7 +39,7 @@ module ps2input(
             end
 
             ACTIVE : begin
-                state_detect <= 3'b010 ; 
+                new_input_flag <= 1'b1 & !clear_flag ; 
                 if (bit_loc < 4'd9) begin
                     kbd_buffer[bit_loc] <= kbd_data;  
                     bit_loc <= bit_loc + 1'b1      ; 
