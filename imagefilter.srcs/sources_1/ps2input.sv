@@ -27,10 +27,9 @@ module ps2input(
     always@(negedge clk)                
     kbd_clk_d <= kbd_clk ; // keyboard clock delayed by 1 system clk, used to check rising/falling edge 
 
-
     always @(negedge kbd_clk) begin
         case (KBD_STATE)
-            IDLE : begin 
+            IDLE :  begin 
                     dvld         <= 1'b0   ;  
                     error_detect <= 2'b00  ; 
                     if (kbd_data == 1'b0 && kbd_clk_d == 1'b1) begin  // Check both kbd_data and previous kbd_clk
@@ -39,7 +38,7 @@ module ps2input(
             end
 
             ACTIVE : begin
-                new_input_flag <= 1'b1 & !clear_flag ; 
+                new_input_flag <= 1'b1 & clear_flag ; 
                 if (bit_loc < 4'd9) begin
                     kbd_buffer[bit_loc] <= kbd_data;  
                     bit_loc <= bit_loc + 1'b1      ; 

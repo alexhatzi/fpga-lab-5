@@ -30,7 +30,7 @@ module ps2decoder (
 
 
 
-initial digit = '0 ; 
+initial digit = 4'hF ; 
 
 
 endmodule 

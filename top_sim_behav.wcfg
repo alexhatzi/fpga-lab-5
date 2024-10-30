@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wave_config>
+   <wave_state>
+   </wave_state>
+   <db_ref_list>
+      <db_ref path="top_sim_behav.wdb" id="1">
+         <top_modules>
+            <top_module name="glbl" />
+            <top_module name="top_sim" />
+         </top_modules>
+      </db_ref>
+   </db_ref_list>
+   <zoom_setting>
+      <ZoomStartTime time="95,988.987 ns"></ZoomStartTime>
+      <ZoomEndTime time="96,135.599 ns"></ZoomEndTime>
+      <Cursor1Time time="96,016.065 ns"></Cursor1Time>
+   </zoom_setting>
+   <column_width_setting>
+      <NameColumnWidth column_width="158"></NameColumnWidth>
+      <ValueColumnWidth column_width="136"></ValueColumnWidth>
+   </column_width_setting>
+   <WVObjectSize size="26" />
+   <wvobject type="logic" fp_name="/top_sim/uut/u_img_driver/clk">
+      <obj_property name="ElementShortName">clk</obj_property>
+      <obj_property name="ObjectShortName">clk</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/top_sim/uut/u_img_driver/disp_clk">
+      <obj_property name="ElementShortName">disp_clk</obj_property>
+      <obj_property name="ObjectShortName">disp_clk</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/top_sim/uut/u_img_driver/vsync">
+      <obj_property name="ElementShortName">vsync</obj_property>
+      <obj_property name="ObjectShortName">vsync</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/top_sim/uut/u_img_driver/hsync">
+      <obj_property name="ElementShortName">hsync</obj_property>
+      <obj_property name="ObjectShortName">hsync</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/top_sim/uut/u_img_driver/rgb_active">
+      <obj_property name="ElementShortName">rgb_active</obj_property>
+      <obj_property name="ObjectShortName">rgb_active</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/top_sim/uut/u_img_driver/new_input_flag">
+      <obj_property name="ElementShortName">new_input_flag</obj_property>
+      <obj_property name="ObjectShortName">new_input_flag</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/top_sim/uut/u_img_driver/digit">
+      <obj_property name="ElementShortName">digit[3:0]</obj_property>
+      <obj_property name="ObjectShortName">digit[3:0]</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/top_sim/uut/u_img_driver/clear_flag">
+      <obj_property name="ElementShortName">clear_flag</obj_property>
+      <obj_property name="ObjectShortName">clear_flag</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/top_sim/uut/u_img_driver/addra">
+      <obj_property name="ElementShortName">addra[15:0]</obj_property>
+      <obj_property name="ObjectShortName">addra[15:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/top_sim/uut/u_img_driver/dina">
+      <obj_property name="ElementShortName">dina[7:0]</obj_property>
+      <obj_property name="ObjectShortName">dina[7:0]</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/top_sim/uut/u_img_driver/wea">
+      <obj_property name="ElementShortName">wea</obj_property>
+      <obj_property name="ObjectShortName">wea</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/top_sim/uut/u_img_driver/addrb">
+      <obj_property name="ElementShortName">addrb[15:0]</obj_property>
+      <obj_property name="ObjectShortName">addrb[15:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/top_sim/uut/u_img_driver/doutb">
+      <obj_property name="ElementShortName">doutb[7:0]</obj_property>
+      <obj_property name="ObjectShortName">doutb[7:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/top_sim/uut/u_img_driver/active_row_cnt">
+      <obj_property name="ElementShortName">active_row_cnt[9:0]</obj_property>
+      <obj_property name="ObjectShortName">active_row_cnt[9:0]</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/top_sim/uut/u_img_driver/hsync_d">
+      <obj_property name="ElementShortName">hsync_d</obj_property>
+      <obj_property name="ObjectShortName">hsync_d</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/top_sim/uut/u_img_driver/row">
+      <obj_property name="ElementShortName">row[20:0]</obj_property>
+      <obj_property name="ObjectShortName">row[20:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/top_sim/uut/u_img_driver/pix">
+      <obj_property name="ElementShortName">pix[20:0]</obj_property>
+      <obj_property name="ObjectShortName">pix[20:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/top_sim/uut/u_img_driver/delay_counter">
+      <obj_property name="ElementShortName">delay_counter[6:0]</obj_property>
+      <obj_property name="ObjectShortName">delay_counter[6:0]</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/top_sim/uut/u_img_driver/debug">
+      <obj_property name="ElementShortName">debug</obj_property>
+      <obj_property name="ObjectShortName">debug</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/top_sim/uut/u_img_driver/redit">
+      <obj_property name="ElementShortName">redit[20:0]</obj_property>
+      <obj_property name="ObjectShortName">redit[20:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/top_sim/uut/u_img_driver/pedit">
+      <obj_property name="ElementShortName">pedit[20:0]</obj_property>
+      <obj_property name="ObjectShortName">pedit[20:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/top_sim/uut/u_img_driver/pixel_data">
+      <obj_property name="ElementShortName">pixel_data[7:0]</obj_property>
+      <obj_property name="ObjectShortName">pixel_data[7:0]</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/top_sim/uut/u_ps2_dec/clk">
+      <obj_property name="ElementShortName">clk</obj_property>
+      <obj_property name="ObjectShortName">clk</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/top_sim/uut/u_ps2_dec/key">
+      <obj_property name="ElementShortName">key[7:0]</obj_property>
+      <obj_property name="ObjectShortName">key[7:0]</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/top_sim/uut/u_ps2_dec/dvld">
+      <obj_property name="ElementShortName">dvld</obj_property>
+      <obj_property name="ObjectShortName">dvld</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/top_sim/uut/u_ps2_dec/digit">
+      <obj_property name="ElementShortName">digit[3:0]</obj_property>
+      <obj_property name="ObjectShortName">digit[3:0]</obj_property>
+   </wvobject>
+</wave_config>

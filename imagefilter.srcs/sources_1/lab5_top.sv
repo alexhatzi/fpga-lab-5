@@ -28,14 +28,10 @@ module lab5_top
         logic [3:0] g_color      ; 
         logic [3:0] b_color      ; 
 
-
-        // ROM signals
-        logic [15:0] rom_addra   ; 
-        logic [ 7:0] rom_douta   ; 
-
         // DP Signals
         logic [15:0] addra       ; 
         logic [ 7:0] dina        ;
+        logic [ 7:0] douta       ;
         logic        wea         ; 
         logic [15:0] addrb       ; 
         logic [ 7:0] doutb       ;  
@@ -97,44 +93,23 @@ module lab5_top
                 ,       .digit          (digit       )
                 ) ; 
 
-
-        // text_driver u_text_driver
-        //         (       .clk            (clk         )
-        //         ,       .slowclk        (slowclk     )
-        //         ,       .rgb_active     (rgb_active  )
-        //         ,       .addra          (addra       )
-        //         ,       .douta          (douta       )
-        //         ,       .digit          (digit       )
-        //         ,       .vsync          (vsync       )
-        //         ,       .hsync          (hsync       )
-        //         ,       .r_color        (r_color     )
-        //         ,       .g_color        (g_color     )
-        //         ,       .b_color        (b_color     )
-        //         ) ; 
-
         image_driver  u_img_driver
                 (       .clk            (clk          )
                 ,       .disp_clk       (slowclk      )
                 ,       .vsync          (vsync        )
                 ,       .hsync          (hsync        )
-                ,       .rgb_active     (rgb_active   )
                 ,       .new_input_flag (flag         )
+                ,       .digit          (digit        )
                 ,       .clear_flag     (clear_flag   )
                 ,       .addra          (addra        )
                 ,       .dina           (dina         )
                 ,       .wea            (wea          )
+                ,       .douta          (douta        )
                 ,       .addrb          (addrb        )
                 ,       .doutb          (doutb        )  
                 ,       .r_color        (r_color      )   
                 ,       .g_color        (g_color      ) 
                 ,       .b_color        (b_color      )
-                );
-        
-        BLK_MEM_ROM   u_BLK_MEM_ROM 
-                (       .clka           (clk         )    // input wire clka
-                ,       .ena            (1'b1        )    // input wire ena
-                ,       .addra          (rom_addra   )    // input wire [15 : 0] addra
-                ,       .douta          (rom_douta   )    // output wire [7 : 0] douta
                 );
 
         DUAL_PORT_BRAM u_dp_BRAM 
@@ -142,8 +117,11 @@ module lab5_top
                 ,       .wea            (wea         )    // input wire [0 : 0] wea
                 ,       .addra          (addra       )    // input wire [15 : 0] addra
                 ,       .dina           (dina        )    // input wire [7 : 0] dina
+                ,       .douta          (douta       )    // input wire [7 : 0] dina
                 ,       .clkb           (clk         )    // input wire clkb
+                ,       .web            (1'b0        )    // never using port b to write
                 ,       .addrb          (addrb       )    // input wire [15 : 0] addrb
+                ,       .dinb           (8'b0        )
                 ,       .doutb          (doutb       )    // output wire [7 : 0] doutb
                 );
 
