@@ -126,19 +126,19 @@ module lab5_top
                 );
 
 
-        // ila_0 u_ila (
-        //         .clk (clk)
-        // ,       .probe0 (clka)
-        // ,       .probe1 (KBD_CLK)
-        // ,       .probe2 (KBD_DATA)
-        // ,       .probe3 (debugBUT_LED)
-        // ,       .probe4 (debugDISP_LED)
-        // ,       .probe5 (red)
-        // ,       .probe6 (green)
-        // ,       .probe7 (blue)
-        // ,       .probe8 (hsync)
-        // ,       .probe9 (vsync)
-        // ) ; 
+        ila_0 your_instance_name (
+            .clk(clk), // input wire clk
+            .probe0(u_img_driver.xpos), // input wire [0:0]  probe0  
+            .probe1(u_img_driver.ypos), // input wire [0:0]  probe1 
+            .probe2(clear_flag), // input wire [0:0]  probe2 
+            .probe3(u_img_driver.disp_clk), // input wire [0:0]  probe3 
+            .probe4(douta), // input wire [0:0]  probe4 
+            .probe5(addra), // input wire [0:0]  probe5 
+            .probe6(flag), // input wire [0:0]  probe6 
+            .probe7(u_img_driver.col), // input wire [0:0]  probe7 
+            .probe8(u_img_driver.row), // input wire [0:0]  probe8 
+            .probe9(u_img_driver.pixel_data)  // input wire [0:0]  probe9
+        );
 
 endmodule
 

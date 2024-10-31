@@ -34,11 +34,12 @@ module ps2input(
                     error_detect <= 2'b00  ; 
                     if (kbd_data == 1'b0 && kbd_clk_d == 1'b1) begin  // Check both kbd_data and previous kbd_clk
                     KBD_STATE    <= ACTIVE ;  
+                    new_input_flag <= '0; 
                     end
             end
 
             ACTIVE : begin
-                new_input_flag <= 1'b1 & clear_flag ; 
+                new_input_flag <= '1 ; 
                 if (bit_loc < 4'd9) begin
                     kbd_buffer[bit_loc] <= kbd_data;  
                     bit_loc <= bit_loc + 1'b1      ; 
@@ -50,6 +51,7 @@ module ps2input(
                     dvld             <= 1'b1    ;  
                     KBD_STATE        <= IDLE    ;  // Transition back to IDLE
                     bit_loc          <= 4'b0000 ;  // Reset bit_loc
+                    new_input_flag <= '0 ; 
                 end else 
                     error_detect     <= 2'b01   ;
             end
