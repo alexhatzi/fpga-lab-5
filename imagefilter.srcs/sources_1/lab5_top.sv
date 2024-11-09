@@ -30,14 +30,16 @@ module lab5_top
 
         // DP Signals
         logic [15:0] addra       ; 
-        logic [ 7:0] dina        ;
-        logic [ 7:0] douta       ;
+        logic [ 8:0] dina        ;
+        logic [ 8:0] douta       ;
         logic        wea         ; 
         logic [15:0] addrb       ; 
-        logic [ 7:0] doutb       ;  
+        logic [ 8:0] doutb       ;  
+
+        logic [15:0] addra2      ; 
+        logic [ 8:0] douta2      ;
 
         logic flag               ; 
-        logic clear_flag         ; 
 
         always@ (posedge clk) begin
         if(rgb_active)
@@ -80,7 +82,6 @@ module lab5_top
                 ,       .key            (key         )
                 ,       .dvld           (dvld        )
                 ,       .error_detect   (error_detect)
-                ,       .clear_flag     (clear_flag  )
                 ,       .new_input_flag (flag        )
                 ,       .bit_loc        (bit_loc     )
                 ) ; 
@@ -100,19 +101,20 @@ module lab5_top
                 ,       .hsync          (hsync        )
                 ,       .new_input_flag (flag         )
                 ,       .digit          (digit        )
-                ,       .clear_flag     (clear_flag   )
                 ,       .addra          (addra        )
                 ,       .dina           (dina         )
                 ,       .wea            (wea          )
                 ,       .douta          (douta        )
                 ,       .addrb          (addrb        )
                 ,       .doutb          (doutb        )  
+                ,       .addra2         (addra2       )
+                ,       .douta2         (douta2       )
                 ,       .r_color        (r_color      )   
                 ,       .g_color        (g_color      ) 
                 ,       .b_color        (b_color      )
                 );
 
-        DUAL_PORT_BRAM u_dp_BRAM 
+        DUAL_PORT_BRAM_1 u_dp_BRAM 
                 (       .clka           (clk         )    // input wire clka
                 ,       .wea            (wea         )    // input wire [0 : 0] wea
                 ,       .addra          (addra       )    // input wire [15 : 0] addra
@@ -121,23 +123,30 @@ module lab5_top
                 ,       .clkb           (clk         )    // input wire clkb
                 ,       .web            (1'b0        )    // never using port b to write
                 ,       .addrb          (addrb       )    // input wire [15 : 0] addrb
-                ,       .dinb           (8'b0        )
+                ,       .dinb           (9'b0        )
                 ,       .doutb          (doutb       )    // output wire [7 : 0] doutb
                 );
+
+        BRAM_ROM_ORIG_IMAGE u_restore_BRAM
+                (       .clka           (clk)
+                ,       .addra          (addra2)
+                ,       .douta          (douta2)
+                ) ;
+
 
 
         ila_0 your_instance_name (
             .clk(clk), // input wire clk
-            .probe0(u_img_driver.xpos), // input wire [0:0]  probe0  
-            .probe1(u_img_driver.ypos), // input wire [0:0]  probe1 
-            .probe2(clear_flag), // input wire [0:0]  probe2 
+            .probe0(u_img_driver.combined_pixels), // input wire [0:0]  probe0  
+            .probe1(u_img_driver.saveY), // input wire [0:0]  probe1 
+            .probe2(u_img_driver.wea), // input wire [0:0]  probe2 
             .probe3(u_img_driver.disp_clk), // input wire [0:0]  probe3 
-            .probe4(douta), // input wire [0:0]  probe4 
-            .probe5(addra), // input wire [0:0]  probe5 
-            .probe6(flag), // input wire [0:0]  probe6 
-            .probe7(u_img_driver.col), // input wire [0:0]  probe7 
-            .probe8(u_img_driver.row), // input wire [0:0]  probe8 
-            .probe9(u_img_driver.pixel_data)  // input wire [0:0]  probe9
+            .probe4(u_img_driver.indexX), // input wire [0:0]  probe4 
+            .probe5(u_img_driver.addra), // input wire [0:0]  probe5 
+            .probe6(u_img_driver.dina), // input wire [0:0]  probe6 
+            .probe7(u_img_driver.filter), // input wire [0:0]  probe7 
+            .probe8(u_img_driver.indexY), // input wire [0:0]  probe8 
+            .probe9(u_img_driver.LPF_STATE)  // input wire [0:0]  probe9
         );
 
 endmodule
